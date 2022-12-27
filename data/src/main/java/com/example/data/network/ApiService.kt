@@ -1,4 +1,4 @@
-package com.example.data.network.di
+package com.example.data.network
 
 import com.example.data.network.model.BlogsDTO
 import retrofit2.Response

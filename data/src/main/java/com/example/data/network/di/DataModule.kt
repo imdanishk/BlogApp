@@ -1,5 +1,8 @@
 package com.example.data.network.di
 
+import com.example.data.network.ApiService
+import com.example.data.repository.GetGetBlogsRepositoryImpl
+import com.example.domain.repository.GetBlogsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @InstallIn(SingletonComponent::class)
 @Module
-class DataModule {
+object DataModule {
 
     @Provides
     fun provideRetrofit(): Retrofit {
@@ -20,5 +23,10 @@ class DataModule {
     @Provides
     fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
+    }
+
+    @Provides
+    fun provideGetBlogsRepository(apiService: ApiService): GetBlogsRepository {
+        return GetGetBlogsRepositoryImpl(apiService = apiService)
     }
 }
