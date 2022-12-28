@@ -20,6 +20,10 @@ class HomeViewModel @Inject constructor(
     // can observe this blog in our UI, but can't change as it's immutable
     val blogs: State<HomeState> = _blogs
 
+    init {
+        getBlogs()
+    }
+
     fun getBlogs() {
         getBlogsUseCase().onEach {
             when (it) {

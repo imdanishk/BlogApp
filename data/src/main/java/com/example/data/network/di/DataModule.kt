@@ -1,5 +1,6 @@
 package com.example.data.network.di
 
+import com.example.common.Constant
 import com.example.data.network.ApiService
 import com.example.data.repository.GetGetBlogsRepositoryImpl
 import com.example.domain.repository.GetBlogsRepository
@@ -17,7 +18,7 @@ object DataModule {
 
     @Provides
     fun provideRetrofit(): Retrofit {
-        return Retrofit.Builder().baseUrl("").addConverterFactory(GsonConverterFactory.create()).build()
+        return Retrofit.Builder().baseUrl(Constant.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
     }
 
     @Provides
